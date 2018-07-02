@@ -1,0 +1,49 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.2
+date	99.01.29.17.00.02;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.02.16.22.52.30;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Status after lab3
+@
+
+
+1.2
+log
+@After inserting real part in inverse ffts.
+@
+text
+@function pixels = randphaseimage(inpic)
+
+ftransform = fft2(inpic);
+
+[xsize ysize] = size(ftransform);
+phase = 2.0 * pi * (rand(xsize, ysize) - 0.5);
+
+modtransform = abs(ftransform) .* exp(i * phase);
+
+pixels = real(ifft2(modtransform));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d10 1
+a10 1
+pixels = ifft2(modtransform);@

@@ -1,0 +1,48 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.2
+date	96.01.22.17.14.33;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.01.11.14.16.15;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Copied from the computer vision course 1995
+@
+
+
+1.2
+log
+@Status daa Lab 1 delas ut.
+@
+text
+@function [ Pos, Value, Anms] = locmax4( A)
+
+Anms = [ diff( A) < 0; ones( 1, size( A, 2))] ...
+	& [ ones( 1, size( A, 2)); diff( A) >= 0] ...
+	& [ diff( A') < 0; ones( 1, size( A, 1))]' ...
+	& [ ones( 1, size( A, 1)); diff( A') >= 0]';
+locmaxind = find( Anms);
+[ Col, Row] = meshgrid( 1: size( A, 2), 1: size( A, 1));
+Pos = [ Row( locmaxind) Col( locmaxind)];
+Value = A( locmaxind);
+Anms = Anms .* A;
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@

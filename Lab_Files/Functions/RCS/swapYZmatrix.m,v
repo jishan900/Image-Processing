@@ -1,0 +1,30 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.1
+date	2001.02.21.16.11.24;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Uppdatering för lab4.
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@function out = swapYZmatrix()
+
+out = [1, 0, 0, 0;
+       0, 0, 1, 0;
+       0, 1, 0, 0;
+       0, 0, 0, 1];
+@

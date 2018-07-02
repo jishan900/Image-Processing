@@ -1,0 +1,57 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.2
+date	2001.02.21.16.11.24;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.02.16.22.52.30;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Status after lab3
+@
+
+
+1.2
+log
+@Bug fix.
+@
+text
+@function curves = zerocrosscurves(zero, mask)
+
+% ZEROCROSSCURVES(ZERO, MASK) -- Extraction of zero-crossing curves
+%
+% Computes the zero-crossing curves from the image ZERO
+% If the MASK image is specified, only point on the zero-crossing
+% curves for which the mask value is non-negative are preserved
+%
+% The format of these curves is the same as for CONTOURC
+
+[coordpairs dummy] = contours(zero, [0 0]);
+
+if (nargin < 2) 
+  curves = coordpairs;
+else
+  curves = thresholdcurves(coordpairs, mask);
+end
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d11 1
+a11 1
+[coordpairs dummy] = contour(zero, 0);
+@

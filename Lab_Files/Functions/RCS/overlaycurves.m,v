@@ -1,0 +1,49 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.1
+date	96.02.16.22.52.30;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Status after lab3
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@function overlaycurves(image, curves)
+
+% OVERLAYCURVES(IMAGE, CURVES)
+%
+% Displays CURVES overlayed on IMAGE
+%
+% The format of these curves is the same as for CONTOURC
+
+showgrey(image);
+
+insize = size(curves, 2);
+trypointer = 1;
+
+hold on;
+
+while trypointer <= insize,
+  polylength = curves(2, trypointer);
+
+  plot(curves(1, (trypointer+1):(trypointer+polylength)), ...
+       curves(2, (trypointer+1):(trypointer+polylength)));
+
+  trypointer = trypointer + 1 + polylength;
+end;
+
+hold off;
+@

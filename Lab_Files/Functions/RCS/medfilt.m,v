@@ -1,0 +1,83 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.3
+date	98.01.07.17.07.02;	author tony;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	96.01.22.17.14.33;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.01.11.14.16.15;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Copied from the computer vision course 1995
+@
+
+
+1.3
+log
+@Before update to matlab version 5.
+@
+text
+@function Medim = medfilt( Image, wheight, wwidth)
+%
+%	MEDIM = MEDFILT( IMAGE, WHEIGHT, WWIDTH) computes an output image
+%	MEDIM by applying a median filter with window height WHEIGHT and
+%	window width WWIDTH to the input image IMAGE.
+%	If WWIDTH is omitted, it is set to WHEIGHT.
+%
+
+if nargin < 2
+  error( 'Wrong # of arguments.')
+  return
+elseif nargin == 2
+  wwidth = wheight;
+end
+
+warea = wheight * wwidth;
+
+if wheight < 1 | wwidth < 1
+  error( 'Bad data: arg #2 (wheight) & #3 (wwidth) must be strictly positive integers.')
+  return
+elseif warea == 1
+  Medim = Image;
+  return
+end
+
+Shifts = zeros( prod( size( Image)), warea);
+
+for vecpsf = eye( warea)
+  Shift = conv2( Image, reshape( vecpsf, wheight, wwidth), 'same');
+  Shifts( :, vecpsf) = Shift( :);
+end
+
+Medim = reshape( median( Shifts'), size( Image, 1) , size( Image, 2));
+@
+
+
+1.2
+log
+@Status daa Lab 1 delas ut.
+@
+text
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@

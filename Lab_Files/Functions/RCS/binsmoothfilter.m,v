@@ -1,0 +1,30 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.1
+date	96.02.16.22.52.30;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Status after lab3
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@function matrix = binsmoothfilter(delta, gamma)
+% BINSMOOTHFILTER -- returns a binomial smoothing filter of
+
+matrix = deltafcn(3, 3) ...
+         + 0.5*delta * ((1 - gamma) * laplace5ptop + gamma * laplacecrossop);
+
+@

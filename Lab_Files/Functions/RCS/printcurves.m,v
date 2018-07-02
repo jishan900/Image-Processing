@@ -1,0 +1,87 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.2
+date	97.12.22.13.31.37;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.02.16.22.52.30;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Status after lab3
+@
+
+
+1.2
+log
+@Before update 1998.
+@
+text
+@function printcurves(curves, verbose)
+
+% PRINTCURVES(CURVES, VERBOSE) -- Prints information about polygons
+%
+% Depending on the value of VERBOSE different amounts of 
+% information about the input polygons is printed
+%
+% VERBOSE = 0 : Only the number of polygons
+%           1 : The length of each polygon
+%           2 : The coordinates
+%
+% The format of these curves is the same as for CONTOURC
+
+insize = size(curves, 2);
+trypointer = 1;
+
+numcurves = 0;
+
+while trypointer <= insize,
+  polylength = curves(2, trypointer);
+
+  numcurves = numcurves + 1;
+
+  if (verbose >= 1)
+    fprintf('  polygon %d: length %d\n',  numcurves, polylength)
+  end
+
+  trypointer = trypointer + 1;
+
+  for polyidx = 1:polylength
+    x = curves(2, trypointer);
+    y = curves(1, trypointer);
+
+    if (verbose >= 2)
+      fprintf('    (x %g, y %g)\n', x, y)
+    end
+
+    trypointer = trypointer + 1;
+  end
+end
+
+fprintf('total number of polygons %d\n', numcurves)
+
+
+
+
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d31 2
+a32 2
+    x = curves(1, trypointer);
+    y = curves(2, trypointer);
+@

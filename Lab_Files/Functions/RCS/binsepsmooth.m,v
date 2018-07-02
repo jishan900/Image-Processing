@@ -1,0 +1,46 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.2
+date	99.12.28.15.24.19;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.02.16.22.52.30;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Status after lab3
+@
+
+
+1.2
+log
+@Updatering för kursomgång period 3 2000.
+@
+text
+@function pixels = binsepsmooth(inpic, delta)
+
+% BINSMOOTH -- convolve an image by (separable) binomial filter
+
+pixels = filter2(binsepsmoothfilter(delta), inpic);
+
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d2 2
+a3 1
+% BINSMOOTH -- convolve by (non-separable) binomial filter
+@

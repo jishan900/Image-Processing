@@ -1,0 +1,74 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.2
+date	2001.02.21.16.11.24;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	97.12.22.13.31.37;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Before update 1998.
+@
+
+
+1.2
+log
+@Uppdatering för lab4.
+@
+text
+@function pixels = pixelplotcurves(image, curves, value)
+
+% PIXELPLOTCURVES(IMAGE, CURVES) -- Creates pixel map from polygons
+
+insize = size(curves, 2);
+trypointer = 1;
+
+numcurves = 0;
+
+while trypointer <= insize,
+  polylength = curves(2, trypointer);
+
+  numcurves = numcurves + 1;
+
+  trypointer = trypointer + 1;
+
+  for polyidx = 1:polylength
+    x = curves(2, trypointer);
+    y = curves(1, trypointer);
+
+    image(round(x), round(y)) = value;
+
+    trypointer = trypointer + 1;
+  end
+end
+
+pixels = image;
+
+
+
+
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 1
+a1 1
+function pixels = printcurves(image, curves, value)
+d21 1
+a21 1
+    image(x, y) = value;
+@

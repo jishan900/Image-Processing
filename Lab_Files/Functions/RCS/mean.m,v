@@ -1,0 +1,88 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.3
+date	99.12.28.15.24.19;	author tony;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	98.02.12.10.42.41;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	97.12.22.13.31.37;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Before update 1998.
+@
+
+
+1.3
+log
+@Updatering för kursomgång period 3 2000.
+@
+text
+@function result = mean(inpic)
+
+[xsize ysize] = size(inpic);
+[x y] = meshgrid(1 : xsize, 1 : ysize);
+
+% Center the coordinate system 
+x = x - ceil((xsize-1)/2);
+y = y - ceil((ysize-1)/2);
+
+abspic = abs(inpic);
+
+norm = sum(abspic(:));
+
+ex = sum(abspic(:) .* x(:))/norm;
+ey = sum(abspic(:) .* y(:))/norm;
+
+matrix = zeros(1, 2);
+matrix(1, 1) = ex;
+matrix(1, 2) = ey;
+
+result = matrix;
+@
+
+
+1.2
+log
+@Update to handle warning caused by using floats as index in
+Matlab version 5. Redefined convention for the center of
+the delta function and the mean function at the same time.
+@
+text
+@d7 2
+a8 2
+x = x - ceil((xsize+1)/2);
+y = y - ceil((ysize+1)/2);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 1
+a1 1
+function result = variance(inpic)
+d4 1
+a4 1
+[x y] = meshgrid(-xsize/2 : xsize/2-1, -ysize/2 : ysize/2 - 1);
+d6 4
+d18 2
+a19 2
+matrix(1, 1) = ex + 1;
+matrix(1, 2) = ey + 1;
+@

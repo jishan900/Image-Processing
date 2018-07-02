@@ -1,0 +1,53 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.2
+date	97.12.22.13.31.37;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.01.22.17.14.33;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Status daa Lab 1 delas ut.
+@
+
+
+1.2
+log
+@Before update 1998.
+@
+text
+@function pixels = cutout(inpic, xmin, ymin, dx, dy)
+% CUTOUT -- cut out a subwindow from a given image
+%
+%   cutout(INPIC, XMIN, YMIN, DX, DY) cuts out a window of size DX*DY
+%   from IMAGE starting at position (XMIN, YMIN)
+%
+
+if ((nargin ~= 5) | (isempty(inpic)))
+  error('One non-empty matrix must be given as input')
+  return
+else 
+  pixels = inpic(xmin:xmin+dx-1, ymin:ymin+dy-1);
+end
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d8 1
+a8 1
+if ((nargin ~= 5) | (isempty(image)))
+@

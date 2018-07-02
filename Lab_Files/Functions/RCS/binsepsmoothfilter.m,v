@@ -1,0 +1,51 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.2
+date	99.12.28.15.24.19;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.02.16.22.52.30;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Status after lab3
+@
+
+
+1.2
+log
+@Updatering för kursomgång period 3 2000.
+@
+text
+@function coeffs = binsepsmoothfilter(delta)
+
+% BINSEPSMOOTHFILTER -- returns a 3x3 filter mask corresponding to
+% a separable binomial filter.
+
+onedimfilter = [delta/2, 1 - delta, delta/2];
+coeffs = onedimfilter' * onedimfilter;
+
+
+
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d2 3
+a4 2
+% LAPLACEFIVEPOINT -- returns a 3x3 filter mask corresponding to
+% the FIve-point Laplacian operator
+@

@@ -1,0 +1,111 @@
+head	1.4;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.4
+date	98.02.06.16.26.03;	author tony;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	98.01.07.17.11.12;	author tony;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	96.01.22.17.14.33;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.01.11.14.16.15;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Copied from the computer vision course 1995
+@
+
+
+1.4
+log
+@Minor update by TL.
+@
+text
+@function [ Pos, Value, Anms] = locmax8( A)
+
+%	[ POS, VALUE, ANMS] = LOCMAX8( A) finds the 8-connectedness local
+%	maxima of the matrix A and returns a list POS with the positions
+%	of the local maxima, a list VALUE with the corresponding local
+%	maximal values, and a matrix ANMS equal to A at the local maxima
+%	and set to 0 everywhere else.
+%
+%       NOTE! This function may not work on matlab version 5.0 and later.
+%       It works, however, if go back to matlab version 4.2 ...
+
+if nargin < 1
+  error( 'Wrong # of arguments.')
+  return
+end
+
+Shifts = zeros( prod( size( A)), 9);
+
+for vecpsf = eye( 9)
+  Shift = conv2( pad( A, -inf), reshape( vecpsf, 3, 3), 'valid');
+  Shifts( :, find(vecpsf)) = Shift( :);
+end
+
+Anms = ones( size( A(:)));
+
+for shiftind = 1: 4
+  Anms = Anms & Shifts( :, 5) >= Shifts( :, shiftind);
+end
+
+for shiftind = 6: 9
+  Anms = Anms & Shifts( :, 5) > Shifts( :, shiftind);
+end
+
+locmaxind = find( Anms);
+[ Col, Row] = meshgrid( 1: size( A, 2), 1: size( A, 1));
+Pos = [ Row( locmaxind) Col( locmaxind)];
+Value = A( locmaxind);
+Anms = reshape( Anms, size( A, 1), size( A, 2)) .* A;
+
+
+
+@
+
+
+1.3
+log
+@Before update to matlab/5.1
+@
+text
+@d21 1
+a21 1
+  Shifts( :, vecpsf) = Shift( :);
+@
+
+
+1.2
+log
+@Status daa Lab 1 delas ut.
+@
+text
+@d2 1
+a2 1
+%
+d8 3
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@

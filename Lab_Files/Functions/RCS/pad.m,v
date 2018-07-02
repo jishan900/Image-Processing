@@ -1,0 +1,51 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.2
+date	96.01.22.17.14.33;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.01.11.14.16.15;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Copied from the computer vision course 1995
+@
+
+
+1.2
+log
+@Status daa Lab 1 delas ut.
+@
+text
+@function Padmat = pad( A, padval)
+%
+
+if nargin < 1
+  error( 'Wrong # of arguments.')
+  return
+elseif nargin == 1
+  Padmat = A( [ 1 1: size( A, 1) size( A, 1)], ...
+	[ 1 1: size( A, 2) size( A, 2)]);
+else
+  Padmat = [ padval * ones( 1, size( A, 2) + 2)
+	padval * ones( size( A, 1), 1) A padval * ones( size( A, 1), 1)
+	padval * ones( 1, size( A, 2) + 2)];
+end
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@

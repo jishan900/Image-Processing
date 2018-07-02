@@ -1,0 +1,58 @@
+head	1.2;
+access;
+symbols;
+locks
+	tony:1.2; strict;
+comment	@// @;
+
+
+1.2
+date	96.01.22.17.14.33;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.01.11.14.16.15;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Copied from the computer vision course 1995
+@
+
+
+1.2
+log
+@Status daa Lab 1 delas ut.
+@
+text
+@function Noisy = gnoise( Clean, sdev, zmax, zmin)
+%
+%	NOISY = GNOISE( CLEAN, SDEV, ZMAX, ZMIN) generates a NOISY image
+%	from a CLEAN image by adding Gaussian pixel-to-pixel independent
+%	noise with standard deviation SDEV.
+%	The resulting image is truncated below and above at ZMIN and ZMAX
+%	respectively.
+%	If ZMIN is omitted alone, it is set to 0.
+%	If ZMAX is also omitted, no truncation is done.
+%
+if nargin < 2
+  error( 'Wrong # of arguments.')
+  return
+elseif nargin == 2
+  Noisy = Clean + sdev * randn( size( Clean));
+elseif nargin == 3
+  Noisy = max( 0, min( zmax, Clean + sdev * randn( size( Clean))));
+else
+  Noisy = max( zmin, min( zmax, Clean + sdev * randn( size( Clean))));
+end
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@

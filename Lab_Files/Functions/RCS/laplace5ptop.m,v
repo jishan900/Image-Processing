@@ -1,0 +1,33 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.1
+date	96.02.16.22.52.30;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Status after lab3
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@function pixels = laplacefivepointoperator()
+% LAPLACEFIVEPOINT -- returns a 3x3 filter mask corresponding to
+% the FIve-point Laplacian operator
+
+pixels = [0,  1, 0; ...
+          1, -4, 1; ...
+          0,  1, 0];
+
+
+@

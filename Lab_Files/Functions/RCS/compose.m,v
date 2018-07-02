@@ -1,0 +1,58 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.2
+date	96.01.22.17.14.33;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.01.11.14.16.15;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Copied from the computer vision course 1995
+@
+
+
+1.2
+log
+@Status daa Lab 1 delas ut.
+@
+text
+@function B = compose( f, A)
+%	B = COMPOSE( F, A) computes the matrix B with elements
+%	B( m, n) = F( A( m, n)).
+%	Thus F should be a vector, and the elements of the matrix A should
+%	take values in the interval [ 0.5, length( F) + 0.5[.
+%	The output matrix B has the same size as the input matrix A.
+%	If F and A are viewed as sampled functions of one and two variables
+%	respectively, then B can be viewed as the sampled version of the
+%	composition ( F o A) of F and A.
+%	If necessary, the range of A is forced within the domain of F by
+%	truncation.
+
+if nargin ~= 2
+  error( 'Wrong # of arguments.')
+  return
+elseif all( size( f) ~= 1)
+  error( 'Bad argument: arg #1 (f) must be a vector (or scalar.)')
+  return
+end
+
+B = reshape( f( min( length( f), max( 1, A( :)))), size( A, 1), size( A, 2));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@

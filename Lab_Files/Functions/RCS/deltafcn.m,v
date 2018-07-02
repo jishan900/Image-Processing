@@ -1,0 +1,60 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.2
+date	98.02.12.10.42.41;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.02.16.22.52.30;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Status after lab3
+@
+
+
+1.2
+log
+@Update to handle warning caused by using floats as index in
+Matlab version 5. Redefined convention for the center of
+the delta function and the mean function at the same time.
+@
+text
+@function pixels = deltafcn(xsize, ysize)
+%
+% DELTAFCN(xsize, ysize) -- generates a discrete delta function of
+% support xsize*ysize, in which the central pixel is set to one and 
+% all other pixel values are set to zero.
+
+matrix = zeros(xsize, ysize);
+matrix(ceil((xsize+1)/2), ceil((ysize+1)/2)) = 1;
+
+pixels = matrix;
+
+
+
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d4 2
+a5 3
+% support xsize*ysize, in which the (approximate) central pixel is
+% set to one and all other pixel values are zero.
+%
+d8 1
+a8 1
+matrix(xsize/2, ysize/2) = 1;
+@

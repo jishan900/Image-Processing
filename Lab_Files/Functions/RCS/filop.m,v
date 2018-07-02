@@ -1,0 +1,45 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.2
+date	96.01.22.17.14.33;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.01.11.14.16.15;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Copied from the computer vision course 1995
+@
+
+
+1.2
+log
+@Status daa Lab 1 delas ut.
+@
+text
+@function filop
+%	FILOP prompts for and executes file creation.
+is = input( 'Print on file? y/n [n]: ', 's');
+
+if isempty( is)
+elseif is( 1) == 'y'
+  eval( [ 'print -deps ' input( 'Filename: ', 's')]);
+end
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@

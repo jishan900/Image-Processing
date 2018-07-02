@@ -1,0 +1,121 @@
+head	1.5;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.5
+date	98.02.12.10.42.41;	author tony;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	98.02.06.16.26.03;	author tony;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	97.12.22.13.32.30;	author tony;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	97.12.22.13.31.37;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.02.16.22.52.30;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Status after lab3
+@
+
+
+1.5
+log
+@Update to handle warning caused by using floats as index in
+Matlab version 5. Redefined convention for the center of
+the delta function and the mean function at the same time.
+@
+text
+@function pixels = discgaussfft(inpic, sigma2)
+
+% DISCGAUSSFFT(pic, sigma2) -- Convolves an image by the
+% (separable) discrete analogue of the Gaussian kernel by
+% performing the convolution in the Fourier domain.
+% The parameter SIGMA2 is the variance of the kernel.
+
+% Reference: Lindeberg "Scale-space theory in computer vision", Kluwer, 1994.
+
+ftransform = fft2(inpic);
+
+[xsize ysize] = size(ftransform);
+[x y] = meshgrid(0 : xsize-1, 0 : ysize-1);
+
+pixels = real(ifft2(exp(sigma2 * (cos(2 * pi*(x / xsize)) + cos(2 * pi*(y / ysize)) - 2)) .* ftransform));
+@
+
+
+1.4
+log
+@Minor update by TL.
+@
+text
+@d3 1
+a3 2
+%
+% DISCGAUSSINVTFFT(pic, sigma2) -- Convolves an image by the
+a6 1
+%
+@
+
+
+1.3
+log
+@Before modification 1998.
+@
+text
+@d7 1
+a7 2
+% The parmeter SIGMA2 is the variance of the kernel, whereas
+% the parameter GAMMA controls the degree of rotational symmetry.
+a9 5
+
+% GAMMA = 0 gives a separable kernel and GAMMA = 1/3 maximum 
+% degree of rotational symmetry
+%
+
+d12 1
+a12 1
+ftransform = fftshift(fft2(inpic));
+d15 1
+a15 1
+[x y] = meshgrid(-xsize/2 : xsize/2-1, -ysize/2 : ysize/2 - 1);
+d17 1
+a17 1
+pixels = real(ifft2(fftshift(exp(sigma2 * (cos(2 * pi*(x / xsize)) + cos(2 * pi*(y / ysize)) - 2)) .* ftransform)));
+@
+
+
+1.2
+log
+@Before update 1998.
+@
+text
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d23 1
+a23 1
+pixels = ifft2(fftshift(exp(sigma2 * (cos(2 * pi*(x / xsize)) + cos(2 * pi*(y / ysize)) - 2)) .* ftransform));
+@

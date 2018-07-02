@@ -1,0 +1,104 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.3
+date	96.02.16.22.52.30;	author tony;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	96.01.22.17.14.33;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.01.11.14.16.15;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Copied from the computer vision course 1995
+@
+
+
+1.3
+log
+@Status after lab3
+@
+text
+@function noisy = sapnoise( inpic, frac, zmin, zmax)
+%
+% SAPNOISE( inpic, FRAC, ZMIN, ZMAX) adds salt-and-peppar noise to an
+% image by resetting a fraction FRAC/2 of the pixels to ZMIN and a 
+% similar fraction to ZMAX in a pixel-to-pixel independent manner.
+%
+% If ZMIN and ZMAX are omitted, they are set to the true minimum
+% and maximum values of inpic.
+%
+
+if nargin < 2
+  error( 'Wrong # of arguments.')
+  return
+elseif nargin < 4
+  zmax = max( inpic( :));
+  zmin = min( inpic( :));
+end
+
+noisy = inpic;
+Rand = rand( size( inpic));
+index = find( Rand < frac / 2);
+noisy( index) = zmin * ones( length( index), 1);
+index = find( Rand > 1 - frac / 2);
+noisy( index) = zmax * ones( length( index), 1);
+@
+
+
+1.2
+log
+@Status daa Lab 1 delas ut.
+@
+text
+@d1 1
+a1 1
+function Noisy = sapnoise( Clean, frac, zmax, zmin)
+d3 3
+a5 7
+%	NOISY = SAPNOISE( CLEAN, FRAC, ZMAX, ZMIN) generates a NOISY image
+%	from a CLEAN image by resetting a fraction FRAC / 2 of the pixels
+%	to ZMIN and a similar fraction to ZMAX in a pixel-to-pixel independent
+%	manner.
+%	If ZMIN is omitted alone, it is set to 0.
+%	If ZMAX is also omitted, ZMIN & ZMAX are set to the true min and
+%	max values of CLEAN.
+d7 4
+d14 3
+a16 5
+elseif nargin == 2
+  zmax = max( Clean( :));
+  zmin = min( Clean( :));
+elseif nargin == 3
+  zmin = 0;
+d19 2
+a20 2
+Noisy = Clean;
+Rand = rand( size( Clean));
+d22 1
+a22 1
+Noisy( index) = zmin * ones( length( index), 1);
+d24 1
+a24 1
+Noisy( index) = zmax * ones( length( index), 1);
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@@

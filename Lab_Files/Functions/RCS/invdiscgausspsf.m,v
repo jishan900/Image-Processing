@@ -1,0 +1,27 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.1
+date	96.02.16.22.52.30;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Status after lab3
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@function pixels = invdiscgausspsf(size, sigma2, gamma, k)
+
+pixels = discgausswinvfft(discgaussfft(deltafcn(size, size), sigma2), sigma2, k);
+@

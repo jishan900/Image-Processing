@@ -1,0 +1,62 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.2
+date	98.02.12.10.42.41;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.02.16.22.52.30;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Status after lab3
+@
+
+
+1.2
+log
+@Update to handle warning caused by using floats as index in
+Matlab version 5. Redefined convention for the center of
+the delta function and the mean function at the same time.
+@
+text
+@function pixels = binsmooth(inpic, delta, gamma)
+
+% BINSMOOTH(INPIC, DELTA, GAMMA) -- convolve by (non-separable) 
+% binomial filter of the form
+%  
+%     1 + DT * ((1 - GAMMA) * nabla5^2 + GAMMA * nablacross^2)
+%  
+%   where nabla5^2 and nablacross^2 are discrete approximations
+%   to the Laplacian operator
+%  
+%                (0,  1, 0)                   (1/2, 0,  1/2)
+%     nabla5^2 = (1, -4, 1)    nablacross^2 = ( 0 , -2,   0)
+%                (0,  1, 0)                   (1/2, 0,  1/2)
+%  
+%   DT should be in the interval [0, 1/2] and the parameter
+%   GAMMA should be selected in the interval [0, 1]
+
+
+pixels = filter2(binsmoothfilter(delta, gamma), inpic);
+
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d2 16
+a17 1
+% BINSMOOTH -- convolve by (non-separable) binomial filter
+@

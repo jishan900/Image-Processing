@@ -1,0 +1,49 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@// @;
+
+
+1.2
+date	98.02.06.16.26.03;	author tony;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	96.02.16.22.52.30;	author tony;	state Exp;
+branches;
+next	;
+
+
+desc
+@Status after lab3
+@
+
+
+1.2
+log
+@Minor update by TL.
+@
+text
+@function pixels = nophaseimage(inpic)
+
+ftransform = fft2(inpic);
+
+modtransform = abs(ftransform);
+
+pixels = real(ifft2(modtransform));
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d3 1
+a3 1
+ftransform = fftshift(fft2(inpic));
+d7 1
+a7 1
+pixels = ifft2(fftshift(modtransform));@
