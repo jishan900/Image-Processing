@@ -1,0 +1,9 @@
+phone=phonecalc256;
+phonecal=rawsubsample(phone);
+phonecal1=rawsubsample(phonecal);
+subplot(1,2,1)
+showgrey(phonecal1)
+phonebin=binsubsample(phone);
+phonebin1=binsubsample(phonebin);
+subplot(1,2,2)
+showgrey(phonebin1)
