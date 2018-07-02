@@ -1,0 +1,10 @@
+function [linepar acc] = houghline(curves, magnitude, nrho, ntheta, ...
+    threshold, nlines, verbose)
+dist_step = 1;
+angle_incr = 2;
+[rows cols] = size(edge);
+rho = 1:dist_step:sqrt(rows^2+cols^2);
+nrho = length(rho);
+theta = 0: angle_incr:360-angle_incr;
+ntheta 
+acc = zeros(length(ntheta), length(nrho));

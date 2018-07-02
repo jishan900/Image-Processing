@@ -1,0 +1,15 @@
+function spat_filter = gaussffta(pic,t)
+
+Fhat = fft2(pic);
+
+siz = size(pic);
+m = siz(1);
+n = siz(2);
+gauss = l_p_filter_sp(m, n, t);
+
+%Hhat = fft2(gauss);
+%Fhat_Hhat = Fhat.*Hhat;
+Fhat_Hhat = Fhat.*g
+spat_filter = ifft2(Fhat_Hhat);
+showgrey(spat_filter)
+%showfs(spat_filter)
