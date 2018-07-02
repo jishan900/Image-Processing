@@ -1,0 +1,34 @@
+function pixels = histeq(image, nacc, verbose)
+%I = rgb2gray(imread('Unequalized_Hawkes_Bay_NZ.jpg'));
+%h = hist(double(nallo(:)),0:255);
+if (nargin < 1)
+  error( 'Wrong number of input arguments.')
+  return
+end
+if (nargin <= 1)
+  nacc = ;
+end
+h = hist(image(:),0:255);
+map = cumsum(h)/prod(size(image));
+%eqtransf = 255*map(nallo+1);
+%J = compose(map,nallo+1);
+mapc = 255*map';
+%eqtransf1 = compose(mapc,image+1);
+pixels = compose(mapc,image+1);
+%[h x]=hist(double(J(:)),0:255);
+%map = cumsum(h)/prod(size(J));
+%figure(1)
+%hold on
+%bar(x, h, 'r');
+%plot(x, 30000*map, 'k')
+%xlim([0 256]);
+%ylim([0 31000]);
+%plot2svg('Equalized Histogram.svg')
+subplot(2,2,1)
+showgrey(eqtransf1)
+subplot(2,2,2)
+showgrey(image)
+subplot(2,2,3)
+hist(eqtransf1(:))
+subplot(2,2,4)
+hist(nallo(:))
